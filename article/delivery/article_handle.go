@@ -22,9 +22,9 @@ type Articlehandle struct {
 }
 
 // NewArticleHandler func API
-func NewArticleHandler(e *echo.Echo, us model.ArticleUsecase) {
+func NewArticleHandler(e *echo.Echo, articleUsecase model.ArticleUsecase) {
 	handler := &Articlehandle{
-		ArUsecase: us,
+		ArUsecase: articleUsecase,
 	}
 	e.GET("/articles", handler.FetchArticle)
 	e.GET("/articles/:id", handler.GetByID)

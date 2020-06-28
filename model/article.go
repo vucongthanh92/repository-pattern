@@ -15,6 +15,16 @@ type Article struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
+// SetCreatedAt method
+func (a *Article) SetCreatedAt() {
+	a.CreatedAt = time.Now()
+}
+
+// SetUpdatedAt method
+func (a *Article) SetUpdatedAt() {
+	a.UpdatedAt = time.Now()
+}
+
 // ArticleUsecase interface
 type ArticleUsecase interface {
 	Fetch(ctx context.Context, cursor string, num int64) ([]Article, string, error)

@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"demo-echo/model"
@@ -140,6 +141,9 @@ func (a *articleUsecase) Store(c context.Context, ar *models.Article) (err error
 	if existArticle != (models.Article{}) {
 		return model.ErrConflict
 	}
+	ar.SetCreatedAt()
+	ar.SetUpdatedAt()
+	fmt.Println("ar:", ar)
 	err = a.articleRepo.Store(ctx, ar)
 	if err != nil {
 		return model.ErrInternalServerError
